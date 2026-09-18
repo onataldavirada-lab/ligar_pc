@@ -1,39 +1,51 @@
-# Ligar PC
+# Ligar PC Voz
 
-App Android mínimo para enviar um pacote Wake-on-LAN ao PC.
+App Android para o Redmi Note 11 ficar ouvindo frases específicas e enviar Wake-on-LAN ao PC.
 
-## Configuração já incluída
+## Frases aceitas
 
-- Nome do app: **Ligar PC**
+- ligar o PC
+- ligar PC
+- ligar computador
+- ligar o computador
+
+## Wake-on-LAN configurado
+
 - MAC: `F4:B5:20:5C:1B:5E`
 - Broadcast: `192.168.15.255`
 - Porta: `9`
 
-Ao abrir o app, ele envia o Magic Packet e fecha automaticamente.
+## Como gerar o APK sem Android Studio
 
-## Gerar o APK sem Android Studio
-
-1. Crie um repositório novo no GitHub.
-2. Extraia este ZIP e envie **todo o conteúdo da pasta LigarPC** para a raiz do repositório.
-3. No GitHub, abra a aba **Actions**.
-4. Escolha **Build APK**.
+1. Crie/abra um repositório no GitHub.
+2. Envie TODO o conteúdo deste projeto para a raiz.
+3. Vá em **Actions**.
+4. Selecione **Build APK**.
 5. Clique em **Run workflow**.
-6. Espere o workflow terminar.
-7. Abra a execução concluída.
-8. Em **Artifacts**, baixe `LigarPC-APK`.
-9. Extraia o ZIP baixado. Dentro dele estará `app-debug.apk`.
-10. Envie o APK para o Redmi e instale.
+6. Quando terminar, abra a execução.
+7. Em **Artifacts**, baixe `LigarPC-Voz-APK`.
+8. Extraia o ZIP e instale `app-debug.apk` no Redmi.
 
-O APK debug é assinado automaticamente e pode ser instalado normalmente.
+## Primeiro uso
 
-## Uso por voz
+1. Abra o app.
+2. Toque em **INICIAR ESCUTA**.
+3. Permita o microfone.
+4. Permita notificações.
+5. Uma notificação fixa ficará ativa.
+6. Fale `ligar o PC`.
 
-Depois de instalado, teste no Redmi:
+## Xiaomi / Redmi
 
-`Hey Google, abrir Ligar PC`
+Para evitar que a MIUI encerre o serviço:
 
-Ao abrir o aplicativo, o pacote Wake-on-LAN é enviado automaticamente.
+- Configurações > Apps > Ligar PC Voz > Bateria > **Sem restrições**
+- Ative **Inicialização automática**, se essa opção estiver disponível.
+- Mantenha a permissão de microfone.
+- Não use "Economia de bateria" para este app.
 
-## Observação
+Após reiniciar o celular, abra o app e toque em **INICIAR ESCUTA** novamente.
 
-O Redmi precisa estar conectado à rede Wi‑Fi que alcança a rede `192.168.15.x`, e o Wake-on-LAN do PC precisa continuar habilitado.
+## Observação importante
+
+Esta versão usa o reconhecedor de voz do próprio Android. Dependendo da ROM/serviço de reconhecimento instalado, o reconhecimento pode usar internet ou pacotes de idioma offline. Para escuta 100% offline e ainda mais robusta, seria necessário embutir um modelo local de reconhecimento (por exemplo, Vosk), aumentando bastante o tamanho do APK.
